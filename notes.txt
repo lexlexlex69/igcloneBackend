@@ -1,0 +1,34 @@
+setup .env
+
+1. create database
+php artisan make:migration create_name_table
+create columns for table
+create foreign keys
+try insert new column with foreign keys
+
+2. create model (if using Eloquent ORM, skip sa step 3 if dli)
+php artisan make:model nameItems
+fill up the ff. $table, $primaryKey, $fillable
+study relations(one to one, many to many, etc.)
+
+3. create controller
+php artisan make:controller Api/nameItemsController --resource
+(note ang --resource is for boiler plate sa mga common nga functions)
+communicate with db using the ff.
+1. eloquent ORM
+2. query builder
+3. raw sql
+
+3.1 create request for controller// for request validation/ preparation
+php artisan make:request nameItemsRequest
+use routeIs() for api unique identifiers
+
+4. create api link
+dapat naka group
+public and sanctum apis
+use ->name() method to assign an unique identifiers for api urls
+
+notes:
+dli mo gana ang Auth::user() if wla middleware
+ang $request->user() ky same2 ra sa Auth::user() pero masneed lng niya og request
+dli mo gana ang storePublicly if way sud ang 'image' sa request, need dapat og condition
